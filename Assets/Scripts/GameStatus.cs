@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class GameStatus : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameStatus : MonoBehaviour
     [SerializeField] int pointsPerBlockDestroyed = 83;
     [SerializeField] int currentScore = 0;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] bool isAutoPlayEnabled;
 
     void Awake() {
         if(FindObjectsOfType<GameStatus>().Length > 1) {
@@ -32,6 +34,11 @@ public class GameStatus : MonoBehaviour
     public void AddToScore() {
         currentScore = currentScore + pointsPerBlockDestroyed;
         scoreText.text = currentScore.ToString();
+    }
+
+    public bool IsAutoPlayEnabled()
+    {
+        return isAutoPlayEnabled;
     }
 
     public void ClearScore() {
